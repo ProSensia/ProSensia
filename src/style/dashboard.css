@@ -1,0 +1,245 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    overflow-y:  hidden ;
+    box-sizing: border-box;
+}
+.dashboard_container
+{
+
+height: 100vh;
+width: 100%;
+display: flex;
+
+}
+.option_container
+{
+    
+    width:  20%;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    background-color: #193e58;
+}
+.logo
+{
+  
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.device_options
+{
+   
+    height: 40%;
+    display: flex;
+    padding: 10px 15px;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.the_options
+{
+
+    height: 25%;
+    cursor: pointer;
+    list-style: none;
+    color: #FECE00;
+    display: flex;
+    padding: 5px 5px;
+    justify-content: start;
+    align-items: center;
+   
+    font-size: 1.3rem;
+width: 100%;
+}
+
+
+.the_options:hover
+{
+    border: 2px solid #FECE00;
+    border-radius: 20px;
+}
+.the_options img
+{
+    margin: 0px 15px;
+    width: 20%;
+    height: 90%;
+}
+
+.prolog
+{
+   
+    height: 25%;
+    display: flex;
+    margin: 10px 0px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 15px;
+    flex-direction: column;
+}
+.prolog a
+{
+   
+    width: 100%;
+    height: 40%;
+display: flex;
+justify-content: start;
+align-items: center;
+font-size: 20px;
+text-decoration: none;
+color: #FECE00;
+}
+
+#logoutbtn
+{
+    width: 100%;
+    height: 40%;
+    cursor: pointer;
+    background: none;
+    border: none;
+    border: 2px solid #FECE00;
+    color: #FECE00;
+    border-radius: 20px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prolog a:hover
+{
+    border: 2px solid #FECE00;
+    border-radius: 20px;
+}
+
+
+.prolog a img
+{
+    margin: 0px 15px;
+    width: 15%;
+    height: 60%;
+}
+
+
+.device_container
+{
+
+    width: 80%;
+    overflow-y: auto;
+}
+.toppart
+{
+   
+    height: 15%;
+    background-color: #FECE00;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    
+}
+.welcome
+{
+    
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    
+}
+.welcome h3
+{
+    font-size: 22px;
+    font-family: "Roboto", sans-serif;
+}
+.adddevice
+{
+
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.adddevice button
+{
+    width: 35%;
+    font-size: 20px;
+    border-radius: 15px;
+    border: none;
+    background-color: #193e58;
+    color: white;
+    height: 60%;
+}
+.lowerpart
+{
+   
+    height: 100vh;
+    padding: 10px 8px;
+justify-content: space-around;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: repeat(2,auto);
+}
+.lower_part_1
+{
+    height: 40%;
+    margin: 5px 0px;
+    width: 100%;
+    justify-content: space-around;
+    display: flex;
+
+}
+.lower_part_2
+{
+    height: 60%;
+    width: 100%;
+    margin: 5px 0px;
+    justify-content: space-around;
+    display: flex;  
+}
+#temperature_graph
+{
+  
+height: 98%;
+display: flex;
+justify-content: center;
+align-items: center;
+width:48%;
+}
+#chart_div_vibration
+{
+    
+    height: 98%;
+    width:48%;
+}
+
+.meter {
+    position: relative;
+    height: 95%;
+    width:48%;
+    background-color: #f2f2f2;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #humidity
+  {
+    
+    height: 100%;
+    width:100%;
+  }
+  #voltage_display
+  {
+font-size: 2vw;
+  }
+  
+  

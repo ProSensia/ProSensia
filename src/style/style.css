@@ -1,0 +1,180 @@
+@font-face {
+    font-family: a_abstract_groovy;
+    src: url(../fonts/a_abstract_groovy/aAbstractGroovy.ttf);
+}
+
+@font-face {
+    font-family: agreloy;
+    src: url(../fonts/agreloy/Agreloy.ttf);
+}
+
+@font-face {
+    font-family: championship;
+    src: url(../fonts/championship/Championship.ttf);
+}
+
+@font-face {
+    font-family: children_title;
+    src: url(../fonts/children_tittle/Children\ Tittle.ttf);
+}
+
+@font-face {
+    font-family: mikeyMouse;
+    src: url(../fonts/mickey_mouse/MickeyMouse_PERSONAL_USE_ONLY.otf);
+}
+
+@font-face {
+    font-family: selina;
+    src: url(../fonts/selina/SELINA.ttf);
+}
+
+@font-face {
+    font-family: komigo;
+    src: url(../fonts/komigo/Komigo3D-Regular.ttf);
+}
+
+@font-face {
+    font-family: mercycristole;
+    src: url(../fonts/mercy_christole/Mercy\ Christole.ttf);
+}
+
+@font-face {
+    font-family: noclubLoneWolf;
+    src: url(../fonts/no_club_lone_wolf/No\ Club\ Lone\ Wolf.ttf);
+}
+
+@font-face {
+    font-family: scretches;
+    src: url(../fonts/scratches_3/Scratches.otf);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #193E58;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    
+}
+/* 
+@media screen and (max-width: 320px)
+{
+    #preloader h1
+    {
+        font-size: 2vw;
+    }
+}
+
+
+/* loader */
+ /*
+#preloader
+{
+    background: #193E58 ;
+    z-index: 10000000;
+    height: 100%;
+    display: flex;
+    color: #fece00;
+    font-family:selina ;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+}
+#preloader h1
+{
+    transition: 2s cubic-bezier(0.9, 0.03, 0.37, 0.99);
+    animation: drop 2s ease-in-out ;
+    font-size: 6rem;
+}
+
+#preloader span
+{
+    position: relative;
+    display: inline-block;
+    
+}
+.let1 {
+    animation: drop 1.4s ease-in infinite;
+    animation-delay: 1s;
+  }
+  
+  .let2 {
+    animation: drop 1.4s ease-in-out infinite;
+    animation-delay: 1.1s;
+  }
+  
+  .let3 {
+    animation: drop 1.4s ease-in-out infinite ;
+    animation-delay: 1.2s;
+  }
+  
+  .let4 {
+    animation: drop 1.4s ease-in-out infinite;
+    animation-delay: 1.3s;
+  
+  }
+  
+  .let5 {
+    animation: drop 1.4s ease-in-out infinite;
+    animation-delay: 1.4s;
+  }
+  
+  .let6 {
+    animation: drop 1.4s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+  
+  .let7 {
+    animation: drop 1.4s ease-in-out infinite;
+    animation-delay: 1.6s;
+  }
+  .let8
+  {
+    animation: drop 1.4s ease-in-out infinite;
+    animation-delay:1.7s;
+  }
+  @keyframes drop {
+      10% {
+          opacity: 0.8;
+      }
+    
+      90% {
+          opacity: 0.5;
+      }
+      100% {
+          opacity: 0;
+        
+      }
+  } */
+
+
+.main_signin_sogn_up
+{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
+}
+.account_created
+{
+    
+    width: 100%;
+    height: 15%;
+    background-color:#fece00 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: scretches;
+    font-size: 35px;
+}
+

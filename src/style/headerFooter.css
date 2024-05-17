@@ -1,0 +1,374 @@
+
+
+.logo
+{
+  
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo_container
+{
+   
+    width: 65%;
+    height: 100%;
+}
+.logo_container img{
+width: 100%;
+height: 100%;
+}
+.nav_components
+{
+   
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+
+}
+.pages_nav
+{
+    list-style: none;
+    /* border: 2px solid blue; */
+    height: 70%;
+    width: 9%;
+    
+}
+.nav_links{
+    width: 100%;
+    height: 100%;
+    font-family: var(--nav_font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    color: white;
+}
+.nav_links:hover 
+{
+ color: #FECE00;
+
+}
+.thenavbar
+{
+  flex-wrap: wrap;
+    height: 11%;
+    width: 100%;
+    display: flex;
+    background-color: #0A2534;
+    justify-content: space-between;
+position: fixed;
+z-index: 1;
+}
+
+.burger
+{
+    display: none;
+    position: absolute;
+cursor: pointer;
+right: 4%;
+    top: 20px;
+background-color: #0A2534;
+}
+.line
+{
+    width: 33px;
+    background-color: white;
+    height: 4px;
+    margin: 5px 5px;
+}
+
+
+/* footer */
+
+.footer
+{
+  height: 55vh;
+  background-color: #0A2534;
+}
+.upper_footer
+{
+
+  height: 67%;
+  justify-content: space-around;
+  display: flex;
+  padding: 10px 15px;
+}
+
+.upper_footer_content {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 17px 25px;
+  height: 100%;
+}
+
+.upper_footer_content h2
+{
+  font-size: 2vw;
+  font-family: "Manrope", sans-serif;
+  color: white;
+}
+.upper_footer_content p{
+  font-size: 1rem;
+  font-family: "Manrope", sans-serif;
+  color: white;
+  opacity: 0.7;
+}
+.socail_links {
+  display: grid;
+  height: auto;
+  grid-template-columns: repeat(2, 40%);
+  justify-content: space-between;
+}
+.links
+{
+  font-size: 1.5vw;
+ margin: 8px 0px;
+display: flex;
+justify-content: start;
+align-items: center;
+  list-style: none;
+  
+}
+.links a
+{
+  height: 70%;
+  width: 90%;
+  font-family: "Manrope", sans-serif;
+  color: white;
+  text-decoration: none;
+  opacity: 0.7;
+}
+.links a:hover
+{
+  text-decoration: underline;
+}
+.lower_footer
+{
+
+  height: 33%;
+  display: flex;
+  padding: 0px 35px;
+  justify-content: space-between;
+  align-items: start;
+}
+.logo_footer
+{
+ margin: 5px 20px;
+  height: 45%;
+width: 14%;
+}
+.logo_footer a
+{
+height: 100%;
+width: 100%;
+}
+.logo_footer img
+{
+  width: 100%;
+  height: 60%;
+}
+.emal_send {
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  width: 29.5%;
+}
+#subscribe_email
+{
+  width: 200px;
+  height: 36px;
+  border-radius: 9px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.815);
+  
+  padding: 5px 5px;
+  font-size: 17px;
+}
+#subscribe_button
+{
+  height: 36px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  width: 81px;
+  border-radius: 9px;
+  padding: 5px 5px;
+  font-size: 16px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-color: #FECE00;
+}
+
+
+
+
+
+@media screen and (max-width: 768px)
+{
+  .thenavbar {
+    width: 100%;
+   height: 8%;
+}
+
+.logo
+{
+  height: 100%;
+}
+.logo_container {
+  width: 92%;
+  height: 100%;
+}
+.burger 
+{
+  display: block;
+  top: 5px;
+}
+.nav_hidecontent
+{
+    opacity: 0;
+    visibility: hidden;
+}
+.nav_components {
+  height: auto;
+  gap: 15px;
+  width: 100%;
+  flex-direction: column;
+  background-color: #0A2534;
+}
+
+
+.pages_nav {
+  list-style: none;
+  margin: 17px 5px;
+  /* border: 2px solid blue; */
+  height: 16%;
+  width: 14%;
+}
+
+
+.lower_footer {
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 35px;
+  justify-content: space-between;
+  align-items: start;
+}
+.upper_footer {
+  height: 67%;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+}
+.footer {
+  height: auto;
+  background-color: #0A2534;
+  padding: 30px 5px;
+}
+.upper_footer_content {
+  width: 91%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 17px 25px;
+  height: 100%;
+}
+
+.upper_footer_content h2 {
+  font-size: 1.1rem;
+  font-family: "Manrope", sans-serif;
+  color: white;
+}
+.upper_footer_content p {
+  font-size: .7rem;
+  font-family: "Manrope", sans-serif;
+  color: white;
+  opacity: 0.7;
+}
+.links {
+  font-size: .8rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 5px 0px;
+  list-style: none;
+}
+.logo_footer {
+  margin: 25px 20px;
+  height: 45%;
+  width: 48%;
+}
+#subscribe_email {
+  width: 47vw;
+  height: 36px;
+  border-radius: 9px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.815);
+  padding: 5px 5px;
+  font-size: 17px;
+}
+.emal_send {
+  justify-content: start;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  width: 0%;
+}
+.logo_footer img {
+  width: 76%;
+  height: 60%;
+}
+}
+
+@media screen and (max-width: 600px)
+{
+  .logo_container {
+    width: 100%;
+    height: 100%;
+}
+.logo {
+    width: 45%;
+}
+}
+@media screen and (max-width: 400px)
+{
+.logo_container {
+  width: 100%;
+  height: 80%;
+}
+.line {
+  width: 29px;
+  background-color: white;
+  height: 4px;
+  margin: 5px 5px;
+}
+}
+
+@media screen and (max-width: 300px)
+{
+
+
+.logo_container {
+  width: 100%;
+  height: 66%;
+}
+.logo {
+  width: 51%;
+}
+
+}

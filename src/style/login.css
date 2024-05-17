@@ -1,0 +1,149 @@
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loginBox{
+    background-color: white;
+    height: 80%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 10px 0px black;
+}
+.loginBoxLeft{
+    background-color: #0A2534;
+    height: 100%;
+    width: 40%;
+
+}
+.loginBoxRight{
+    background-color: white;
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginBoxRightContent{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+.loginBoxRightContentRap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+}
+.loginBoxRightContent form{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 40px;
+}
+.loginBoxRightContent form .loginBoxRightBtn{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4vw;
+    align-items: center;
+}
+.loginBoxRightContent form input{
+    height: 3vw;
+}
+.loginBoxRightContent form input:nth-child(1), input:nth-child(2){
+    background: none;
+    border: none;
+    border-bottom: 2px solid #193e58;
+    font-size: 1.6vw;
+}
+.loginBoxRightBtn input{
+    text-align: center;
+    height: 4vw !important;
+    border-radius: 50px;
+    font-size: 2vw;
+    width: 40%;
+    border: none;
+    box-shadow: 0 0 3px 0 black;
+    background-color: #FECE00;
+    color: #0A2534;
+    cursor: pointer;
+}
+.loginBoxRightBtn input:hover{
+    background-color: #0A2534;
+    color: #FECE00;
+}
+.loginBoxRightBtn a{
+    color: red;
+}
+.loginBoxRightContent input:focus{
+    outline: none;
+    
+}
+
+.loginBoxRightImg{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5vw;
+}
+.loginBoxRightImg img{
+    width: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+.loginBoxLeftContent{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loginBoxLeftContentRap{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-around;
+}
+.loginBoxLeftContentLoginBox{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.loginBoxLeftContentLoginBox img{
+    width: 50%;
+    position: absolute;
+}
+.loginBoxLeftContentLoginBox h1{
+    z-index: 2;
+    margin-right: 2.5vw;
+    font-size: 3vw;
+    font-family: scretches;
+}
+.loginBoxLeftContentSignupBox h1{
+    margin-right: 2.5vw;
+    font-size: 3vw;
+    font-family: scretches;
+    color: #FECE00;
+}
+.loginBoxLeftContentSignupBox{
+    cursor: pointer;
+    padding-left: 30px;
+}

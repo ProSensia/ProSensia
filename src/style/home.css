@@ -1,0 +1,581 @@
+
+
+.heroHome {
+  background-color: #0b2e45;
+  width: 100%;
+  height: 140%;
+}
+
+.heroHomeTop {
+  width: 100%;
+
+  height: 70%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.heroHomeTopImg {
+  width: 40%;
+}
+.heroHomeTopImg img {
+  width: 100%;
+}
+.heroHomeTopContent {
+  width: 40%;
+
+  height: 70%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  color: wheat;
+}
+.heroHomeTopContent div {
+  width: 80%;
+
+  position: relative;
+}
+
+.heroHomeTopContent h1 {
+  font-size: 5.5vw;
+
+  font-family: scretches;
+
+  font-weight: 900;
+
+  position: relative;
+}
+.heroHomeTopContent h4 {
+  margin-top: 20px;
+
+  font-size: 2vw;
+
+  color: #fece00;
+
+  font-weight: 400;
+
+  font-family: "selina";
+}
+.heroHomeTopContent img {
+  width: 10%;
+  position: absolute;
+}
+.heroHomeTopContentImg1 {
+  top: -34%;
+
+  left: -57px;
+
+  width: 96% !important;
+}
+.heroHomeTopContentImg2 {
+  top: 20%;
+
+  left: -32px;
+
+  width: 57% !important;
+}
+.heroHomeTopContentImg3 {
+  top: 18%;
+
+  left: -59px;
+
+  width: 108% !important;
+}
+
+.heroHomeBottom {
+  width: 100%;
+
+  height: 28%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.heroHomeBottom .heroHomeBottomDiv {
+  width: 90%;
+
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  color: white;
+}
+.heroHomeBottomRow1 {
+  width: 100%;
+
+  height: 50%;
+
+  display: flex;
+
+  justify-content: space-around;
+
+  align-items: center;
+}
+.heroHomeBottomRow1 .rowCol1 {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.heroHomeBottomRow1 .rowCol2 {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.heroHomeBottomRow1 .rowCol3 {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.heroHomeBottomRow2 {
+  width: 100%;
+
+  height: 50%;
+
+  display: flex;
+
+  justify-content: space-around;
+
+  align-items: center;
+}
+.heroHomeBottomRow2 .rowCol1 {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.heroHomeBottomRow2 .rowCol2 {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.heroHomeBottomRow2 .rowCol3 {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.heroHomeBottomRow1 .col1Div1 {
+  width: 30%;
+
+  font-size: 6vw;
+}
+.heroHomeBottomRow1 .col1Div2 {
+  width: 70%;
+}
+.heroHomeBottomRow1 .col2Div1 {
+  width: 30%;
+
+  font-size: 6vw;
+}
+.heroHomeBottomRow1 .col2Div2 {
+  width: 70%;
+}
+.heroHomeBottomRow1 .col3Div1 {
+  width: 30%;
+
+  font-size: 6vw;
+}
+.heroHomeBottomRow1 .col3Div2 {
+  width: 70%;
+}
+.heroHomeBottomRow2 .col1Div1 {
+  width: 30%;
+
+  font-size: 6vw;
+}
+.heroHomeBottomRow2 .col1Div2 {
+  width: 70%;
+}
+.heroHomeBottomRow2 .col2Div1 {
+  width: 30%;
+
+  font-size: 8vw;
+}
+.heroHomeBottomRow2 .col2Div2 {
+  width: 70%;
+}
+.heroHomeBottomRow2 .col3Div1 {
+  width: 30%;
+
+  font-size: 6vw;
+}
+.heroHomeBottomRow2 .col3Div2 {
+  width: 70%;
+}
+.rowCol1 {
+  width: 33%;
+}
+.rowCol2 {
+  width: 33%;
+}
+.rowCol3 {
+  width: 33%;
+}
+.heroHomeBottomDiv h3 {
+  color: #fece00;
+  font-family: "Manrope", sans-serif;
+}
+.heroHomeBottomDiv h2 {
+  font-family: "selina";
+  color: white;
+}
+.heroHomeBottomDiv p {
+  opacity: 0.7;
+  font-size: 0.9vw;
+  font-family: "Manrope", sans-serif;
+  color: white;
+}
+
+
+
+
+.homeSection2 {
+  width: 100%;
+
+  height: 80%;
+
+  background-color: #244c67;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+
+
+  overflow: hidden;
+}
+.homeSection2Left {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homeSection2Left img {
+  width: 70%;
+}
+.homeSection2Right {
+  width: 40%;
+
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 3%;
+}
+.homeSection2Right h1 {
+  color: #fece00;
+
+  font-family: "scretches";
+
+  font-size: 4vw;
+
+  font-weight: 900;
+}
+.homeSection2Right p {
+  width: 95%;
+  font-size: 1.1rem;
+  margin-top: 5%;
+  font-family: "Manrope", sans-serif;
+  color: white;
+
+  opacity: 0.7;
+}
+.homeSection2Center {
+  position: absolute;
+
+  z-index: 0;
+
+  height: 100%;
+
+  width: 30%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.homeSection2Center img {
+  width: 110%;
+
+  height: 60%;
+
+  rotate: 90deg;
+
+  position: absolute;
+
+  z-index: 5;
+}
+
+
+
+
+
+.homeSection3 {
+  width: 100%;
+  height: 80%;
+  background-color: #FECE00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.homeSection3Left {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homeSection3Left img {
+  width: 70%;
+}
+.homeSection3Right {
+  width: 40%;
+
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 3%;
+}
+.homeSection3Right h1 {
+  color: #0A2534;
+  font-family: "scretches";
+  font-size: 4vw;
+  font-weight: 900;
+}
+.homeSection3Right p {
+  width: 95%;
+  margin-top: 5%;
+  color: #244C67;
+  opacity: 0.9;
+  font-size: 1.1rem;
+  font-family: "Manrope", sans-serif;
+}
+
+@media screen and (max-width: 768px)
+{
+
+ 
+  .heroHome {
+    background-color: #0b2e45;
+    width: 100%;
+    height: auto;
+}
+.heroHomeBottomDiv
+{
+ 
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.heroHomeBottomRow1 {
+  width: 45%;
+  height: 50%;
+  gap: 25px;
+  padding: 18px 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.heroHomeBottomRow2 {
+  width: 45%;
+  gap: 25px;
+  padding: 18px 1px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.rowCol1 {
+  width: 100%;
+}
+.rowCol2 {
+  width: 100%;
+}
+.rowCol3 {
+  width:100%;
+}
+.heroHomeBottomDiv p {
+  opacity: 0.7;
+  font-size: 2.5vw;
+  margin: 5px 0px;
+}
+.heroHome {
+  background-color: #0b2e45;
+  width: 100%;
+  padding: 18% 10px;
+  height: auto;
+}
+
+.homeSection2 
+{
+  height: auto;
+
+}
+.homeSection2Center
+{
+  display: none;
+}
+.homeSection2 {
+  width: 100%;
+ flex-wrap: wrap;
+  padding: 20px 10px;
+  background-color: #244c67;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.homeSection2Right {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3%;
+}
+.homeSection2Right h1 {
+  color: #fece00;
+  font-family: "scretches";
+  font-size: 7vw;
+  font-weight: 900;
+}
+.homeSection2Right p {
+  width: 95%;
+  font-size: 3.5vw;
+  margin-top: 5%;
+  font-family: "Manrope", sans-serif;
+  color: white;
+  opacity: 0.7;
+}
+
+.homeSection3
+{
+  flex-direction: column;
+  height: auto;
+  flex-wrap: wrap;
+}
+
+.homeSection3Right
+{
+  order: 2;
+  width: 97%;
+}
+.homeSection2Left img {
+  width: 90%;
+}
+.homeSection3Right h1 {
+  color: #0A2534;
+  font-family: "scretches";
+  font-size: 6vw;
+  font-weight: 900;
+}
+.homeSection3Left img {
+  width: 90%;
+}
+  .homeSection3Right p {
+    width: 95%;
+    margin-top: 5%;
+    color: #244C67;
+    opacity: 0.9;
+    font-size: 3.8vw;
+    font-family: "Manrope", sans-serif;
+
+}
+.heroHomeTopImg {
+  width: 55%;
+}
+.heroHomeTopContent h1 {
+  font-size: 7.5vw;
+  font-family: scretches;
+  font-weight: 900;
+  position: relative;
+}
+.heroHomeTopContent {
+  width: 47%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: wheat;
+}
+.heroHomeTopContent h4 {
+  margin-top: 20px;
+  font-size: 3.5vw;
+  color: #fece00;
+  font-weight: 400;
+  font-family: "selina";
+}
+.heroHomeTop {
+  width: 100%;
+  height: 70%;
+  margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+}
+
+
+
+
+
+
+@media screen and (max-width: 460px)
+{
+  .heroHomeBottomDiv h3 {
+    font-size: 4vw;
+}
+.heroHomeBottomDiv h2 {
+  
+  font-size: 5.5vw;
+}
+
+}
+
+@media screen and (max-width: 320px)
+{
+  .heroHomeBottomDiv h3 {
+    font-size: 2.5vw;
+}
+
+}

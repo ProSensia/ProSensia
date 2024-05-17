@@ -1,0 +1,153 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signupBox {
+  background-color: white;
+  height: 80%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 10px 0px black;
+}
+.signupBoxLeft {
+  background-color: #0a2534;
+  height: 100%;
+  width: 40%;
+}
+.signupBoxRight {
+  background-color: white;
+  height: 100%;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signupBoxRightContent {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+.signupBoxRightContentRap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+.signupBoxRightContent form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 10px;
+}
+.signupBoxRightFLName {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  justify-content: space-between;
+}
+.signupBoxRightFLName input {
+  width: 49%;
+}
+.signupBoxRightContent form .signupBoxRightBtn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4vw;
+  padding: 10px 10px;
+  align-items: center;
+}
+.signupBoxRightContent form input {
+  height: 3vw;
+}
+.signupBoxRightContent form input:nth-child(1),
+.signupBoxRightContent form input:nth-child(2),
+.signupBoxRightContent form input:nth-child(3),
+.signupBoxRightContent form input:nth-child(4),
+.signupBoxRightContent form input:nth-child(5) {
+  background: none;
+  border: none;
+  border-bottom: 2px solid #193e58;
+  font-size: 1.6vw;
+}
+
+.signupBoxRightBtn input {
+  text-align: center;
+  height: 4vw !important;
+  border-radius: 50px;
+  font-size: 2vw;
+  width: 40%;
+  border: none;
+  box-shadow: 0 0 3px 0 black;
+  background-color: #fece00 !important;
+  color: #0a2534;
+  cursor: pointer;
+}
+.signupBoxRightBtn input:hover {
+  background-color: #0a2534 !important;
+  color: #fece00 !important;
+}
+.signupBoxRightBtn a {
+  color: red;
+}
+.signupBoxRightContent input:focus {
+  outline: none;
+}
+
+.signupBoxRightImg {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5vw;
+}
+.signupBoxRightImg img {
+  width: 50%;
+}
+
+.signupBoxLeftContent {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signupBoxLeftContentRap {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-around;
+}
+.signupBoxLeftContentsignupBox {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.signupBoxLeftContentsignupBox img {
+  width: 50%;
+  position: absolute;
+}
+.signupBoxLeftContentsignupBox h1 {
+  z-index: 2;
+  margin-right: 2.5vw;
+  font-size: 3vw;
+  font-family: scretches;
+}
+.signupBoxLeftContentSignupBox h1 {
+  margin-right: 2.5vw;
+  font-size: 3vw;
+  font-family: scretches;
+  color: #fece00;
+}
+.signupBoxLeftContentSignupBox {
+  cursor: pointer;
+  padding-left: 30px;
+}

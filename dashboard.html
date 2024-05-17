@@ -24,16 +24,16 @@
             </div>
             <div class="device_options">
 
-                <li class="the_options"><img src="assets/logos/dashboard.png" alt="">Dashboard</li>
-                <li class="the_options"> <img src="assets/logos/responsive.png" alt=""> Device</li>
-                <li class="the_options"> <img src="assets/logos/settings.png" alt=""> Device Setting</li>
+                <li class="the_options"><img src="assets/logos/dashboard.png" alt=""><span>Dashboard</span></li>
+                <li class="the_options"> <img src="assets/logos/responsive.png" alt=""><span> Device</span></li>
+                <li class="the_options"> <img src="assets/logos/settings.png" alt=""> <span> Device Setting</span></li>
 
             </div>
 
 
 
             <div class="prolog">
-                <a href="myprofile.php"> <img src="assets/logos/user.png" alt=""> My Profile</a>
+                <a href="myprofile.php"> <img src="assets/logos/user.png" alt=""> <span> My Profile</span></a>
                 <a href="logout.php" id="logoutbtn">Logout</a>
             </div>
         </aside>
@@ -41,38 +41,36 @@
 
         <section class="device_container">
 
-            <div class="toppart">
+            <!-- <div class="toppart">
                 <div class="welcome">
                     <h3>DashBoard <br>
 
-                        Welcome <?php
-// echo $_SESSION['username'];
-?></h3>
+                        Welcome </h3>
                 </div>
                 <div class="adddevice">
                     <button>Add Device</button>
                 </div>
-            </div>
-            <div class="lowerpart">
+            </div> -->
+            <!-- <div class="lowerpart">
                 <div class="lower_part_1">
 
 
 
-<!-- vibration graph -->
+<!-- vibration graph 
 
                      <?php
-                    include "partials/db_conn.php";
-                    $sql = "SELECT vibration, time FROM sensor_data"; // Assuming your table has columns for vibration values and time in milliseconds
-                    $result = $conn->query($sql);
+                    // include "partials/db_conn.php";
+                    // $sql = "SELECT vibration, time FROM sensor_data"; // Assuming your table has columns for vibration values and time in milliseconds
+                    // $result = $conn->query($sql);
 
-                    $data = array();
-                    while ($row = $result->fetch_assoc()) {
-                        $vibration = (float)$row['vibration'];
-                        $timeMilliseconds = (int)$row['time'];
-                        $data[] = array($timeMilliseconds, $vibration);
-                    }
+                    // $data = array();
+                    // while ($row = $result->fetch_assoc()) {
+                    //     $vibration = (float)$row['vibration'];
+                    //     $timeMilliseconds = (int)$row['time'];
+                    //     $data[] = array($timeMilliseconds, $vibration);
+                    // }
 
-                    $conn->close();
+                    // $conn->close();
                     ?> -
 
                     <div id="chart_div_vibration"></div>
@@ -109,7 +107,7 @@
                             chart.draw(data, options);
                         }
                     </script>
-<!-- voltage display -->
+<!-- voltage display 
 <div class="meter">
 
 <h3 id="voltage_display"></h3>
@@ -148,7 +146,7 @@
                 <div class="lower_part_2">
 
 
-<!-- humidity -->
+<!-- humidity 
 
 <div id="humidity"></div>
 
@@ -214,7 +212,7 @@
 </script>
                 </div>
 
-            </div>
+            </div> -->
         </section>
     </main>
 </body>

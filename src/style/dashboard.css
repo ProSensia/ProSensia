@@ -243,3 +243,77 @@ font-size: 2vw;
   }
   
   
+  @media screen and (min-width: 349px)
+  {
+    .dashboard_container
+    {
+        flex-direction: column;
+    }
+    .option_container
+    {
+        order: 2;
+        height: 10vh;
+        width: 100%;
+        flex-direction: row;
+
+    }
+    .logo
+    {
+        display: none;
+    }
+    .device_options
+    {
+        flex-direction: row;
+        width: 80%;
+            height: 100%;
+            padding: 10px 3px;
+    }
+
+.the_options
+{
+height: 100%;
+font-size: .8rem;
+width: 30%;
+}
+.the_options span
+{
+    display: none;
+}
+
+.the_options img
+{
+border: 2px solid red;
+width: 50%;
+height: 100%;
+
+}
+
+
+.prolog
+{
+    width: 30%;
+    height: 100%;
+    margin: 0 0;
+    padding: 7px 7px;
+    flex-direction: row;
+}
+    .device_container
+    {
+        border: 2px solid yellowgreen;
+        height: 90vh;
+        width: 100%;
+    }
+
+.prolog a span
+{
+    display: none;
+}
+.prolog a 
+{
+    height: 100%;
+}
+.prolog a img
+{margin: 0px 5px;
+    width: 100%;
+}
+  }

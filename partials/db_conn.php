@@ -1,8 +1,11 @@
 <?php
-$server="premium104.web-hosting.com";
-$username="prosxwdx_psensia";
-$password="hzdA;aUWlFMi";
-$dbname="prosxwdx_Prosensia";
+
+require __DIR__ . "../vendor/autoload.php"
+
+$server="";
+$username="";
+$password="";
+$dbname="";
 
 
 

@@ -1,4 +1,8 @@
 <?php
+include "./partials/headers.php";
+
+
+
 $success=false;
 $already=false;
 $incomplete=false;
@@ -24,8 +28,12 @@ $terms_aggree=$_POST["terms_agree"];
     
     if (($password == $repeatpassword)) { // check if repeat pass is equal to password or not
 
+$hashedpassword=password_hash($password, PASSWORD_DEFAULT);
 
-      $query  = "SELECT * FROM `accounts` WHERE  `username`='$username'"; // to select username from table
+
+
+
+      $query  = "SELECT `username` FROM `accounts` WHERE  `username`='$username'"; // to select username from table
 
       $check = mysqli_query($conn, $query);
 
@@ -35,7 +43,7 @@ $terms_aggree=$_POST["terms_agree"];
   }
   else{
     $insert = $conn->prepare("INSERT INTO `accounts` (`fname`, `lname`,`username`, `password`, `device code`,`terms` ) VALUES(?,?,?,?,?,?)"); // to insert data into table 
-    $insert->bind_param("ssssss", $firstname, $lastname, $username,$password ,$device_code,$terms_aggree );
+    $insert->bind_param("ssssss", $firstname, $lastname, $username,$hashedpassword ,$device_code,$terms_aggree );
 
     if ($insert->execute()) {
       $success = true;
@@ -78,7 +86,7 @@ $terms_aggree=$_POST["terms_agree"];
     if($already)
     {
     echo '  <div class="account_created" style="background-color:#D0342C" >
-      <h1>Account Creation Failed !</h1>
+      <h1>User Name Already Taken!</h1>
     </div>';
     }
 
@@ -116,9 +124,9 @@ $terms_aggree=$_POST["terms_agree"];
             <form action="" method="post" >
                 <div class="signupBoxRightFLName">
                     <input name="fname" type="text" pattern="[a-z,A-z]*" required  placeholder="First Name">
-                    <input name="lname" type="text" placeholder="Last Name">
+                    <input name="lname" type="text" pattern="[a-z,A-z]*" placeholder="Last Name">
                 </div>
-              <input name="username" type="text" placeholder="Username" pattern="[a-z,A-z]*" required  />
+              <input name="username" type="text" placeholder="Username" pattern="[a-z,A-z,1-9]*" required  />
               <input name="password" type="password" minlength="8" maxlength="16" placeholder="Password" />
               <input name="rpassword" type="password" placeholder="Re Password" />
               <input name="devicecode" type="text" placeholder="Device Code" />

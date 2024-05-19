@@ -1,3 +1,8 @@
+<?php
+include "./partials/headers.php";
+
+?>
+
 
 
 
@@ -12,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="src/style/dashboard.css">
 </head>
 
@@ -24,54 +29,101 @@
             </div>
             <div class="device_options">
 
-                <li class="the_options"><img src="assets/logos/dashboard.png" alt=""><span>Dashboard</span></li>
-                <li class="the_options"> <img src="assets/logos/responsive.png" alt=""><span> Device</span></li>
-                <li class="the_options"> <img src="assets/logos/settings.png" alt=""> <span> Device Setting</span></li>
+                <li class="the_options"><img src="assets/logos/dashboard.webp" alt=""><span>Dashboard</span></li>
+                <li class="the_options" id="devices" > <img src="assets/logos/settings.webp" alt=""> <span>  Devices</span></li>
+                <li class="the_options"> <img src="assets/logos/user.webp" alt=""><span> Profile</span></li>
 
             </div>
 
-
+<script>
+    let devices=document.getElementById("devices");
+    devices.addEventListener("click",()=>{
+window.location.href="multidevices.php";
+    })
+</script>
 
             <div class="prolog">
-                <a href="myprofile.php"> <img src="assets/logos/user.png" alt=""> <span> My Profile</span></a>
-                <a href="logout.php" id="logoutbtn">Logout</a>
+              
+                <a href="logout.php" id="logoutbtn"><img src="assets/logos/018_128_arrow_exit_logout-512.webp" alt=""> <span> Logout</span></a>
             </div>
         </aside>
 
 
         <section class="device_container">
 
-            <!-- <div class="toppart">
+            <div class="toppart">
                 <div class="welcome">
                     <h3>DashBoard <br>
 
                         Welcome </h3>
                 </div>
                 <div class="adddevice">
-                    <button>Add Device</button>
+                    
+                    <button id="add_device_button"><img src="assets/logos/pngtree-vector-plus-icon-png-image_515260-removebg-preview.webp" alt="" class="add_button_img">
+                    <span>Add Device</span>
+                    </button>
+<form  id="add_form" method="post" action="">
+                    <input id="add_device_input" type="text" name="devicecode" id="">
+                    <input id="add_device_submit" type="submit"  value="Add">
+                    </form>
                 </div>
-            </div> -->
-            <!-- <div class="lowerpart">
+            </div> 
+
+            <script>
+    let add_device_button = document.getElementById("add_device_button");
+    let add_form = document.getElementById("add_form");
+
+    add_device_button.addEventListener("click", () => {
+        add_device_button.style.display = "none";
+        add_form.style.display = "flex";
+    });
+
+    add_form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        let add_form_data = new FormData(add_form); // Create FormData object with form data
+
+        $.ajax({
+            url: "adddevice.php",
+            type: "POST",
+            data: add_form_data,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                // console.log("success");
+                alert("device added successfully");
+            },
+            error: function(xhr, status, error) {
+                console.error("Error saving data:", error);
+            }
+        });
+
+        
+    });
+</script>
+
+
+            <div class="lowerpart">
                 <div class="lower_part_1">
 
 
 
-<!-- vibration graph 
+<!-- vibration graph -->
 
-                     <?php
-                    // include "partials/db_conn.php";
-                    // $sql = "SELECT vibration, time FROM sensor_data"; // Assuming your table has columns for vibration values and time in milliseconds
-                    // $result = $conn->query($sql);
+                      <?php 
+                   include "partials/db_conn.php";
+                    $sql = "SELECT vibration, time FROM sensor_data"; // Assuming your table has columns for vibration values and time in milliseconds
+                    $result = $conn->query($sql);
 
-                    // $data = array();
-                    // while ($row = $result->fetch_assoc()) {
-                    //     $vibration = (float)$row['vibration'];
-                    //     $timeMilliseconds = (int)$row['time'];
-                    //     $data[] = array($timeMilliseconds, $vibration);
-                    // }
+                    $data = array();
+                    while ($row = $result->fetch_assoc()) {
+                        $vibration = (float)$row['vibration'];
+                        $timeMilliseconds = (int)$row['time'];
+                        $data[] = array($timeMilliseconds, $vibration);
+                    }
 
-                    // $conn->close();
-                    ?> -
+                    $conn->close();
+                    ?> 
 
                     <div id="chart_div_vibration"></div>
 
@@ -107,7 +159,7 @@
                             chart.draw(data, options);
                         }
                     </script>
-<!-- voltage display 
+<!-- voltage display -->
 <div class="meter">
 
 <h3 id="voltage_display"></h3>
@@ -146,7 +198,7 @@
                 <div class="lower_part_2">
 
 
-<!-- humidity 
+<!-- humidity -->
 
 <div id="humidity"></div>
 
@@ -182,12 +234,13 @@
             title: 'Time'
         },
         vAxis: {
-            title: 'Humidity'
+            title: 'Humidity ',
+            
         },
         colors: ['#3366CC', '#DC3912'],
         vAxes: {
-                0: {title: 'Humidity (%)'}, // Label y-axis 0 for humidity
-                1: {title: 'Temperature (°C)'} // Label y-axis 1 for temperature
+                0: {title: 'Humidity (%) & Temperature (°C)'}, // Label y-axis 0 for humidity
+              
             },
             
     };
@@ -212,7 +265,8 @@
 </script>
                 </div>
 
-            </div> -->
+            </div> 
+         
         </section>
     </main>
 </body>

@@ -16,4 +16,10 @@ elseif ($router=='/contact') {
 elseif ($router=='/dashboard') {
     include "dashboard.php";
 }
+elseif ($router=='/signin') {
+    include "login.php";
+}
+elseif ($router=='/signup') {
+    include "signup.php";
+}
 ?>

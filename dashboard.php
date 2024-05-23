@@ -175,7 +175,7 @@ window.location.href="multidevices.php";
                 success: function(data) {
                     if ('voltage' in data) {
                         $('#voltage_display').text('Voltage: ' + data.voltage + 'V');
-                        // console.log("Voltage: " + data.voltage);
+                        console.log("Voltage: " + data.voltage);
                     } else {
                         console.error("Unexpected response format: " + JSON.stringify(data));
                     }

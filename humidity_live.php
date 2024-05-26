@@ -1,17 +1,32 @@
 <?php
 include "partials/db_conn.php";
-$sql = "SELECT humidity, temperature, time FROM sensor_data"; // Assuming your table has columns for humidity, temperature, and timestamps
-$result = $conn->query($sql);
+session_start();
 
-$data = array();
-while ($row = $result->fetch_assoc()) {
-    $humidity = (int)$row['humidity'];
-    $temperature = (int)$row['temperature'];
-    $timestamp = (int)$row['time']; // Assuming timestamp is already in milliseconds
-    $data[] = array($timestamp, $humidity, $temperature); // Adding both humidity and temperature to the data array
+// Check if searchdatetime is set
+$datetimecheck = isset($_POST["searchdatetime"]) ? $_POST["searchdatetime"] : '';
+
+if ($datetimecheck) {
+    // If datetime is passed, filter the data based on the provided datetime
+    $sql = "SELECT humidity, temperature, timestamp FROM a WHERE timestamp >= '$datetimecheck'";
+} else {
+    // If no datetime is passed, fetch all data
+    $sql = "SELECT humidity, temperature, timestamp FROM a";
 }
 
-$conn->close();
+$result = $conn->query($sql);
 
-echo json_encode($data);
+$data = array(); // Initialize an array to store the data
+
+// Loop through the result set and fetch data
+while ($row = $result->fetch_assoc()) {
+    $humidity = (int)$row['humidity']; // Convert humidity to integer
+    $temperature = (int)$row['temperature']; // Convert temperature to integer
+    $timestamp = $row['timestamp']; // Use the timestamp as is
+    $data[] = array($timestamp, $humidity, $temperature); // Add timestamp, humidity, and temperature to the data array
+}
+
+$conn->close(); // Close the database connection
+
+header('Content-Type: application/json'); // Ensure the correct content type is set
+echo json_encode($data); // Encode the data array into JSON format and output it
 ?>

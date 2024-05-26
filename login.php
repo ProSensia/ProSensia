@@ -25,6 +25,7 @@ $num=mysqli_num_rows($result);
                session_start();
         $_SESSION["loggedin"]=true;
         $_SESSION['username'] = $username;
+        $_SESSION['user_id'] = $user_id;
                 header("location:dashboard.php");
             }
             else
@@ -54,6 +55,21 @@ $num=mysqli_num_rows($result);
     <link rel="stylesheet" href="./src/style/login.css" />
   </head>
   <body>
+
+  <div id="preloader">
+      <h1>
+       <span class="let1">P</span>
+       <span class="let2">R</span>
+       <span class="let3">O</span>
+       <span class="let4">S</span>
+       <span class="let5">E</span>
+       <span class="let6">N</span>
+       <span class="let7">S I</span>
+       <span class="let8">A</span> 
+      </h1>
+    </div>
+
+
     <section class="main_signin_sogn_up">
 
       <div class="loginBox">

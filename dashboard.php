@@ -1,6 +1,11 @@
 <?php
-include "./partials/headers.php";
+session_start();
 
+
+if(!isset( $_SESSION['loggedin'])||$_SESSION['loggedin']!=true){
+header("location:login.php");
+
+}
 ?>
 
 
@@ -55,52 +60,34 @@ window.location.href="multidevices.php";
                 <div class="welcome">
                     <h3>DashBoard <br>
 
-                        Welcome </h3>
+                        Welcome <?php 
+                        echo $_SESSION['username']  ?> 
+                        </h3>
                 </div>
                 <div class="adddevice">
                     
-                    <button id="add_device_button"><img src="assets/logos/pngtree-vector-plus-icon-png-image_515260-removebg-preview.webp" alt="" class="add_button_img">
+                    <button id="add_device_button" onclick="to_add_device()"><img src="assets/logos/pngtree-vector-plus-icon-png-image_515260-removebg-preview.webp" alt="" class="add_button_img">
                     <span>Add Device</span>
                     </button>
-<form  id="add_form" method="post" action="">
-                    <input id="add_device_input" type="text" name="devicecode" id="">
-                    <input id="add_device_submit" type="submit"  value="Add">
-                    </form>
+
+<script>
+
+function to_add_device() {
+window.location.href="multidevices.php";
+}
+
+</script>
+
+
+
+
+
                 </div>
             </div> 
 
-            <script>
-    let add_device_button = document.getElementById("add_device_button");
-    let add_form = document.getElementById("add_form");
 
-    add_device_button.addEventListener("click", () => {
-        add_device_button.style.display = "none";
-        add_form.style.display = "flex";
-    });
+            
 
-    add_form.addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the form from submitting normally
-
-        let add_form_data = new FormData(add_form); // Create FormData object with form data
-
-        $.ajax({
-            url: "adddevice.php",
-            type: "POST",
-            data: add_form_data,
-            processData: false,
-            contentType: false,
-            success: function(data) {
-                // console.log("success");
-                alert("device added successfully");
-            },
-            error: function(xhr, status, error) {
-                console.error("Error saving data:", error);
-            }
-        });
-
-        
-    });
-</script>
 
 
             <div class="lowerpart">
@@ -108,62 +95,12 @@ window.location.href="multidevices.php";
 
 
 
-<!-- vibration graph -->
 
-                      <?php 
-                   include "partials/db_conn.php";
-                    $sql = "SELECT vibration, time FROM sensor_data"; // Assuming your table has columns for vibration values and time in milliseconds
-                    $result = $conn->query($sql);
-
-                    $data = array();
-                    while ($row = $result->fetch_assoc()) {
-                        $vibration = (float)$row['vibration'];
-                        $timeMilliseconds = (int)$row['time'];
-                        $data[] = array($timeMilliseconds, $vibration);
-                    }
-
-                    $conn->close();
-                    ?> 
-
-                    <div id="chart_div_vibration"></div>
-
-                    <script type='text/javascript'>
-                        google.charts.load('current', {
-                            'packages': ['corechart']
-                        });
-                        google.charts.setOnLoadCallback(drawChart);
-
-                        function drawChart() {
-                            var data = new google.visualization.DataTable();
-                            data.addColumn('number', 'Time');
-                            data.addColumn('number', 'Vibration Value');
-
-                            var chartData = <?php echo json_encode($data); ?>;
-                            data.addRows(chartData);
-
-                            var options = {
-                                title: 'Vibration Data',
-                                hAxis: {
-                                    title: 'Time',
-                                    titleTextStyle: {
-                                        color: '#333'
-                                    }
-                                },
-                                vAxis: {
-                                    title: 'Vibration Value',
-                                    minValue: 0
-                                }
-                            };
-
-                            var chart = new google.visualization.AreaChart(document.getElementById('chart_div_vibration'));
-                            chart.draw(data, options);
-                        }
-                    </script>
 <!-- voltage display -->
 <div class="meter">
 
 <h3 id="voltage_display"></h3>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -172,21 +109,23 @@ window.location.href="multidevices.php";
             $.ajax({
                 url: 'get_live_voltage.php',
                 dataType: 'json',
-                success: function(data) {
-                    if ('voltage' in data) {
-                        $('#voltage_display').text('Voltage: ' + data.voltage + 'V');
-                        console.log("Voltage: " + data.voltage);
-                    } else {
-                        console.error("Unexpected response format: " + JSON.stringify(data));
-                    }
-                },
+                success:function(data) {
+    if (typeof data === 'object' && 'voltage' in data) {
+        $('#voltage_display').text('Voltage: ' + data.voltage + 'V');
+        console.log("Voltage: " + data.voltage);
+    } else {
+        console.error("Unexpected response format:", data);
+    }
+    }
+    ,
                 error: function(xhr, status, error) {
                     console.error("Error fetching voltage data:", error);
                 }
             });
-        }, 500); // Fetch data every 1 second (adjust as needed)
+        }, 1000); // Fetch data every 1 second (adjust as needed)
     });
 </script>
+
 
 
 
@@ -199,70 +138,116 @@ window.location.href="multidevices.php";
 
 
 <!-- humidity -->
-
+<form class="getdata_for_date" action="javascript:void(0);" onsubmit="drawChart()" method="post">
+    <input type="datetime-local" id="thedate" name="searchdatetime">
+    <input type="submit" id="showdatasub" value="Search">
+</form>
 <div id="humidity"></div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     google.charts.load('current', {
         'packages': ['corechart']
     });
     google.charts.setOnLoadCallback(drawChart);
 
+    // Global variable to maintain the existing data
+    var existingData = [];
+
     function drawChart() {
-        var jsonData;
         $.ajax({
-            url: 'humidity_live.php', // Change this to the PHP file that fetches data
+            url: 'humidity_live.php',
+            type: 'POST',
+            data: {
+                searchdatetime: $('#thedate').val() // Send the datetime if provided
+            },
             dataType: 'json',
             success: function(data) {
-                jsonData = data;
-                drawChartWithData(jsonData);
-                console.log(jsonData)
+                console.log("Data fetched from PHP:", data); // Log data to verify it is fetched correctly
+                existingData = data; // Initialize existingData with fetched data
+                drawChartWithData(existingData);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error("Failed to fetch data:", textStatus, errorThrown);
             }
         });
     }
+
     function drawChartWithData(jsonData) {
-    var data2 = new google.visualization.DataTable();
-    data2.addColumn('number', 'Time');
-    data2.addColumn('number', 'Humidity');
-    data2.addColumn('number', 'Temperature');
-    data2.addRows(jsonData);
+        var data2 = new google.visualization.DataTable();
+        data2.addColumn('datetime', 'Time'); // Use 'datetime' for the time column
+        data2.addColumn('number', 'Humidity');
+        data2.addColumn('number', 'Temperature');
 
-    var options = {
-        hAxis: {
-            title: 'Time'
-        },
-        vAxis: {
-            title: 'Humidity ',
-            
-        },
-        colors: ['#3366CC', '#DC3912'],
-        vAxes: {
-                0: {title: 'Humidity (%) & Temperature (°C)'}, // Label y-axis 0 for humidity
-              
-            },
-            
-    };
-
-    var chart = new google.visualization.LineChart(document.getElementById('humidity'));
-    chart.draw(data2, options);
-
-    // Periodically update the chart every 5 seconds (adjust as needed)
-    setInterval(function() {
-        $.ajax({
-            url: 'humidity_live.php',
-            dataType: 'json',
-            success: function(newData) {
-                jsonData = newData;
-                data2.removeRows(0, data2.getNumberOfRows());
-                data2.addRows(jsonData);
-                chart.draw(data2, options);
-            }
+        // Convert the timestamp from string to JavaScript Date objects
+        var rows = jsonData.map(function(row) {
+            return [new Date(row[0]), row[1], row[2]];
         });
-    }, 500); // Update interval in milliseconds
-}
+
+        data2.addRows(rows);
+
+        var options = {
+            hAxis: {
+                title: 'Time',
+                format: 'MMM dd, HH:mm', // Display date and time in a readable format
+                gridlines: { count: 15 }
+            },
+            vAxis: {
+                title: 'Values',
+            },
+            colors: ['#3366CC', '#DC3912'],
+            vAxes: {
+                0: { title: 'Humidity (%) & Temperature (C)' },
+                1: { title: 'Temperature (C)', format: 'decimal' } // Separate y-axis for temperature if needed
+            },
+            series: {
+                0: { targetAxisIndex: 0 },
+                // 1: { targetAxisIndex: 1 }
+            },
+            interpolateNulls: true
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('humidity'));
+        chart.draw(data2, options);
+
+        // Periodically update the chart every 5 seconds (adjust as needed)
+        setInterval(function() {
+            $.ajax({
+                url: 'humidity_live.php',
+                type: 'POST',
+                data: {
+                    searchdatetime: $('#thedate').val() // Send the datetime if provided
+                },
+                dataType: 'json',
+                success: function(newData) {
+                    console.log("Data fetched from PHP (update):", newData); // Log data to verify it is fetched correctly
+
+                    // Append new data to the existing data
+                    newData.forEach(function(row) {
+                        var timestamp = new Date(row[0]).getTime();
+                        if (!existingData.some(function(existingRow) { return new Date(existingRow[0]).getTime() === timestamp; })) {
+                            existingData.push(row);
+                        }
+                    });
+
+                    // Convert the timestamp from string to JavaScript Date objects
+                    var newRows = existingData.map(function(row) {
+                        return [new Date(row[0]), row[1], row[2]];
+                    });
+
+                    data2.removeRows(0, data2.getNumberOfRows());
+                    data2.addRows(newRows);
+                    chart.draw(data2, options);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error("Failed to fetch data (update):", textStatus, errorThrown);
+                }
+            });
+        }, 5000); // Update interval in milliseconds
+    }
 </script>
+
+
                 </div>
 
             </div> 

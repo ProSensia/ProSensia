@@ -72,6 +72,25 @@ $hashedpassword=password_hash($password, PASSWORD_DEFAULT);
     <link rel="stylesheet" href="./src/style/signup.css" />
   </head>
   <body>
+
+  <div id="preloader">
+      <h1>
+       <span class="let1">P</span>
+       <span class="let2">R</span>
+       <span class="let3">O</span>
+       <span class="let4">S</span>
+       <span class="let5">E</span>
+       <span class="let6">N</span>
+       <span class="let7">S I</span>
+       <span class="let8">A</span> 
+      </h1>
+    </div>
+
+
+
+
+
+
     <section class="main_signin_sogn_up">
     <?php
     if($success)
@@ -81,6 +100,8 @@ $hashedpassword=password_hash($password, PASSWORD_DEFAULT);
     </div>';
     }
 
+    sleep(3);
+header("location: login.php")
 ?>
     <?php
     if($already)

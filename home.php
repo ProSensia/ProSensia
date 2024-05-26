@@ -1,6 +1,9 @@
 <?php
 include "./partials/headers.php";
 session_start();
+
+
+
 ?>
 
 

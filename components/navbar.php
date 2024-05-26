@@ -9,12 +9,12 @@
           <li class="pages_nav"> <a class="nav_links" href="/prosensia/about"> AboutUs</a></li>
           <li class="pages_nav"> <a class="nav_links" href="/prosensia/contact"> ContactUs</a></li>
           <?php
-// if(!isset( $_SESSION['username'])||!isset($_SESSION['loggedin'])){
-//   echo '   <li class="pages_nav"> <a class="nav_links" href="login.php"> Sign In</a></li>';
-// }
-// else{
-//  echo' <li class="pages_nav"> <a class="nav_links" href="dashboard.php"> Profile</a></li>';
-// }
+if(!isset( $_SESSION['username'])||!isset($_SESSION['loggedin'])){
+  echo '   <li class="pages_nav"> <a class="nav_links" href="login.php"> Sign In</a></li>';
+}
+else{
+ echo' <li class="pages_nav"> <a class="nav_links" href="dashboard.php"> Profile</a></li>';
+}
 ?>
        
 

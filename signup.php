@@ -100,8 +100,7 @@ $hashedpassword=password_hash($password, PASSWORD_DEFAULT);
     </div>';
     }
 
-    sleep(3);
-header("location: login.php")
+
 ?>
     <?php
     if($already)

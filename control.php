@@ -1,22 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "prosensia";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+include "./partials/db_conn.php";
 
 $mac = $_GET['mac'];  // Get the MAC address from the request
 
 // Sanitize MAC address to use it as a table name
 $mac_sanitized = str_replace(':', '_', $mac);
-$tableName = "device_" . $mac_sanitized;
+$tableName = "device_control_" . $mac_sanitized;
 
 $sql = "SELECT starttime, endtime FROM $tableName";
 $result = $conn->query($sql);

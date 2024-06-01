@@ -1,116 +1,65 @@
 <?php
 session_start();
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 
+    $user_id = $_SESSION['user_id'];
+    $mac = $_POST['mac'];
 
+    include "./partials/db_conn.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{$user_id=$_SESSION['user_id'];
-    $macadd = $_POST['mac_address'];
-    $location = $_POST['location'];
-    // $mac = $_POST['mac'];
+// Check if POST variables are set
+if (isset($_POST['mac'], $_POST['voltage'], $_POST['current'], $_POST['temperature'], $_POST['humidity'])) {
+    $mac = $_POST['mac'];
+    $voltage = $_POST['voltage'];
+    $current = $_POST['current'];
+    $temperature = $_POST['temperature'];
+    $humidity = $_POST['humidity'];
 
-include "./partials/db_conn.php";
-
-$query  = "SELECT `device_code` FROM `deviceslist` WHERE  `device_code`='$macadd'"; // to select username from table
-
-$check = mysqli_query($conn, $query);
-
-if ($check->num_rows > 0) // checks if user name already exists or not
-{
-
-    echo "already exsisits";
-    header("location:multidevices.php");
-}
-else
-{
-
-    if(!empty($macadd) || !empty($location) )
-    {
-        $insert_into_device_table=$conn->prepare("INSERT INTO `deviceslist` (`userid`,`device_code`,`location`) VALUES  (?,?,?) ");
-        $insert_into_device_table->bind_param("sss", $user_id,$macadd,$location);
-        if ($insert_into_device_table->execute()) {
-    echo "data saved";
-          } else {
-            echo $conn->error;
-          }
-      
-          $insert_into_device_table->close();
-    
-    
-    
     // Sanitize MAC address to use it as a table name
-    // $mac_sanitized = str_replace(':', '_', $macadd);
-    // $tableName =   $mac_sanitized;
-    
-    // Create table query with starttime and endtime columns
-    $sql = "CREATE TABLE IF NOT EXISTS $macadd (
+    $mac_sanitized = str_replace(':', '_', $mac);
+    $tableName_data = "device_data_" . $mac_sanitized;
+    $tableName_control = "device_control_" . $mac_sanitized;
+
+    // Create data table query
+    $sql_data_table = "CREATE TABLE IF NOT EXISTS $tableName_data (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         voltage FLOAT NOT NULL,
         current FLOAT NOT NULL,
         temperature FLOAT NOT NULL,
         humidity FLOAT NOT NULL,
-        relay BOOLEAN NOT NULL,
-        starttime DATETIME DEFAULT NULL,
-        endtime DATETIME DEFAULT NULL,
         timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
-    
-    if ($conn->query($sql) === TRUE) {
-        echo "Table $macadd created successfully";
+
+    // Create control table query
+    $sql_control_table = "CREATE TABLE IF NOT EXISTS $tableName_control (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        starttime TIMESTAMP NULL,
+        endtime TIMESTAMP NULL,
+        timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    )";
+
+    if ($conn->query($sql_data_table) === TRUE && $conn->query($sql_control_table) === TRUE) {
+        echo "Tables created successfully";
     } else {
-        echo "Error creating table: " . $conn->error;
+        echo "Error creating tables: " . $conn->error;
     }
-    
-    // if(!empty($mac))
-    // {
-    //     $voltage = $_POST['voltage'];
-    // $current = $_POST['current'];
-    // $temperature = $_POST['temperature'];
-    // $humidity = $_POST['humidity'];
-    // $relay = $_POST['relay'];
-    
-    //     $sql = "INSERT INTO $tableName (voltage, current, temperature, humidity, relay)
-    //     VALUES ('$voltage', '$current', '$temperature', '$humidity', '$relay')";
-        
-    //     if ($conn->query($sql) === TRUE) {
-    //         echo "New record created successfully";
-    //     } else {
-    //         echo "Error: " . $sql . "<br>" . $conn->error;
-    //     }
-    // }
-    // Insert data into table
-    
-    
-    
-          
-          $conn->close();
-    
-    
-    
-    
-    
-    header("location:multidevices.php");
-    
+
+    // Insert data into data table
+    $sql_insert = "INSERT INTO $tableName_data (voltage, current, temperature, humidity)
+    VALUES ('$voltage', '$current', '$temperature', '$humidity')";
+
+    if ($conn->query($sql_insert) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql_insert . "<br>" . $conn->error;
     }
-    else
-    {
-        echo "enter data";
-    }
-    
+
+} else {
+    echo "Error: POST data is missing.";
 }
 
-
-}
-
-
-
-
-
-
-
-
-
-// $conn->close();
+$conn->close();
 ?>

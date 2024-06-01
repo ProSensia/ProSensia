@@ -7,10 +7,10 @@ $datetimecheck = isset($_POST["searchdatetime"]) ? $_POST["searchdatetime"] : ''
 
 if ($datetimecheck) {
     // If datetime is passed, filter the data based on the provided datetime
-    $sql = "SELECT humidity, temperature, timestamp FROM a WHERE timestamp >= '$datetimecheck'";
+    $sql = "SELECT humidity, temperature, timestamp FROM c8_f0_9e_f4_35_b0 WHERE timestamp >= '$datetimecheck'";
 } else {
     // If no datetime is passed, fetch all data
-    $sql = "SELECT humidity, temperature, timestamp FROM a";
+    $sql = "SELECT humidity, temperature, timestamp FROM c8_f0_9e_f4_35_b0";
 }
 
 $result = $conn->query($sql);

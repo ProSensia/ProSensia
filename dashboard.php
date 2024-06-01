@@ -28,30 +28,20 @@ header("location:login.php");
 
 <body>
     <main class="dashboard_container">
-        <aside class="option_container">
-            <div class="logo">
-                <img src="assets/images/3 1.png" alt="">
-            </div>
-            <div class="device_options">
-
-                <li class="the_options"><img src="assets/logos/dashboard.webp" alt=""><span>Dashboard</span></li>
-                <li class="the_options" id="devices" > <img src="assets/logos/settings.webp" alt=""> <span>  Devices</span></li>
-                <li class="the_options"> <img src="assets/logos/user.webp" alt=""><span> Profile</span></li>
-
-            </div>
-
-<script>
-    let devices=document.getElementById("devices");
-    devices.addEventListener("click",()=>{
-window.location.href="multidevices.php";
-    })
-</script>
-
-            <div class="prolog">
-              
-                <a href="logout.php" id="logoutbtn"><img src="assets/logos/018_128_arrow_exit_logout-512.webp" alt=""> <span> Logout</span></a>
-            </div>
-        </aside>
+    <aside class="option_container">
+    <div class="logo">
+        <img src="assets/images/3 1.png" alt="">
+    </div>
+    <div class="device_options">
+        <li class="the_options" id="todashboard"><img src="src/images/dashboard.png" alt=""><span>Dashboard</span></li>
+        <li class="the_options" id="devices"><img src="src/images/devices.png" alt=""><span>Devices</span></li>
+        <li class="the_options" id="timetable"><img src="src/images/timetable.png" alt=""><span>Timetable</span></li>
+        <li class="the_options"><img src="src/images/profile.png" alt=""><span>Profile</span></li>
+    </div>
+    <div class="prolog">
+        <a href="logout.php" id="logoutbtn"><img src="assets/logos/018_128_arrow_exit_logout-512.webp" alt=""><span>Logout</span></a>
+    </div>
+</aside>
 
 
         <section class="device_container">
@@ -70,13 +60,7 @@ window.location.href="multidevices.php";
                     <span>Add Device</span>
                     </button>
 
-<script>
 
-function to_add_device() {
-window.location.href="multidevices.php";
-}
-
-</script>
 
 
 
@@ -92,6 +76,21 @@ window.location.href="multidevices.php";
 
             <div class="lowerpart">
                 <div class="lower_part_1">
+
+              
+    <form action="control.php" method="post" class="timer_set">
+        <label for="startdaterealy">Start Time</label>  
+        <input type="datetime-local" name="startrealytime" id="startdaterealy">
+        <label for="enddaterelay">End Time</label>  
+        <input type="datetime-local" name="endrelaytime" id="enddaterelay">
+        <input type="submit" style="background-color: #FECE00; border:none;" value="Set">
+    </form>
+
+
+
+
+
+
 
 
 
@@ -137,11 +136,17 @@ window.location.href="multidevices.php";
                 <div class="lower_part_2">
 
 
+                    <form class="getdata_for_date" action="javascript:void(0);" onsubmit="drawChart()" method="post">
+                        <input type="datetime-local" id="thedate" name="searchdatetime">
+                        <input type="submit" id="showdatasub" value="Search">
+                    </form>
+                    
+                          
+                    
+                    
 <!-- humidity -->
-<form class="getdata_for_date" action="javascript:void(0);" onsubmit="drawChart()" method="post">
-    <input type="datetime-local" id="thedate" name="searchdatetime">
-    <input type="submit" id="showdatasub" value="Search">
-</form>
+
+
 <div id="humidity"></div>
 
 
@@ -254,6 +259,24 @@ window.location.href="multidevices.php";
          
         </section>
     </main>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    let todashboard = document.getElementById("todashboard");
+    todashboard.addEventListener("click", () => {
+        window.location.href = "dashboard.php";
+    });
+
+    let timetable = document.getElementById("timetable");
+    timetable.addEventListener("click", () => {
+        window.location.href = "timetable.php";
+    });
+
+    let devices = document.getElementById("devices");
+    devices.addEventListener("click", () => {
+        window.location.href = "multidevices.php";
+    });
+});
+</script>
 </body>
 
 </html>

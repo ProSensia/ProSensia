@@ -230,8 +230,8 @@ width:48%;
 
 .meter {
     position: relative;
-    height: 95%;
-    width:48%;
+    height: 80%;
+    width:30%;
     background-color: #f2f2f2;
     border: 2px solid #ccc;
     border-radius: 10px;
@@ -321,10 +321,30 @@ grid-template-columns: repeat(4,auto);
     border-radius: 10px;
 }
 
+.timer_set
+{
+   
+    width: 55%;
+    background-color: #193e58e3;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-
-
-
+.timer_set input
+{
+    height: 20%;
+    width: 200px;
+    font-size: 16px;
+    margin: 10px 10px;
+}
+.timer_set label
+{
+    color: white;
+    font-size: 18px;
+}
 
 
 /*   

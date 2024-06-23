@@ -100,7 +100,7 @@ $hashedpassword=password_hash($password, PASSWORD_DEFAULT);
     </div>';
     }
 
-
+   
 ?>
     <?php
     if($already)
@@ -128,7 +128,7 @@ $hashedpassword=password_hash($password, PASSWORD_DEFAULT);
                 <h1>LOGIN</h1>
             </div>
             <div class="signupBoxLeftContentsignupBox">
-                <img src="./src/images/shapeForloginPage.png">
+                <img src="./src/images/shapeForLoginPage.png">
                 <h1>SIGNUP</h1>
             </div>
             
@@ -151,7 +151,7 @@ $hashedpassword=password_hash($password, PASSWORD_DEFAULT);
               <input name="rpassword" type="password" placeholder="Re Password" />
               <input name="devicecode" type="text" placeholder="Device Code" />
               <div class="signupBoxRightBtn">
-              <input style="width: 30px; height:28px !important; background: none; margin: 0px 20px; " type="checkbox" name="terms_agree" id=""><p>Do you  <a href="#">Agree Terms and Conditions </a></p> 
+              <input style="width: 10px; height:10px !important; background: none; margin: 0px 5px; " type="checkbox" name="terms_agree" id=""><p>Do you  <a href="#">Agree Terms and Conditions </a></p> 
                 <input type="submit" value="Signup" />
               </div>
             </form>

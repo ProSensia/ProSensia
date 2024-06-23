@@ -39,7 +39,36 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
             <a href="logout.php" id="logoutbtn"><img src="src/images/logout.png" alt=""><span>Logout</span></a>
         </div>
     </aside>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let todashboard = document.getElementById("todashboard");
+    todashboard.addEventListener("click", () => {
+        window.location.href = "dashboard.php";
+    });
 
+    let timetable = document.getElementById("timetable");
+    timetable.addEventListener("click", () => {
+        window.location.href = "aitimetable.php";
+    });
+
+    let devices = document.getElementById("devices");
+    devices.addEventListener("click", () => {
+        window.location.href = "multidevices.php";
+    });
+
+let settime=document.getElementById("settime");
+settime.addEventListener("click",()=>{
+    window.location.href="settime.php";
+})
+
+});
+
+
+function to_add_device()
+{
+     window.location.href = "multidevices.php";
+}
+</script>
     <section class="device_container">
 
         <div class="toppart">
@@ -82,54 +111,68 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                     ?>
                 </form>
             </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Function to update switch state
+        function updateSwitchState() {
+            var selectedDevice = $('#device_select').val();
+            $.ajax({
+                url: 'update_switch.php',
+                method: 'POST',
+                data: {
+                    getSwitchState: true,
+                    deviceCode: selectedDevice
+                },
+                success: function(response) {
+                    var isChecked = response.trim() === '1';
+                    $('#toggleSwitch').prop('checked', isChecked);
 
-            <script>
-               $(document).ready(function() {
-    // Function to update switch state
-    function updateSwitchState() {
-        var selectedDevice = $('#device_select').val();
-        $.ajax({
-            url: 'update_switch.php',
-            method: 'POST',
-            data: {
-                getSwitchState: true, // Signal to get current switch state
-                deviceCode: selectedDevice
-            },
-            success: function(response) {
-                var isChecked = response.trim() === '1'; // Check if response is '1'
-                $('#toggleSwitch').prop('checked', isChecked);
-            },
-            error: function(xhr, status, error) {
-                console.error("Error fetching switch state:", error);
-            }
+                    // Store switch state in localStorage
+                    localStorage.setItem('switchState', isChecked ? '1' : '0');
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching switch state:", error);
+                }
+            });
+        }
+
+        // Initial update when document is ready
+        updateSwitchState();
+
+        // Change event for toggle switch
+        $('#toggleSwitch').change(function() {
+            var isChecked = $(this).is(':checked') ? 1 : 0;
+            var selectedDevice = $('#device_select').val();
+            $.ajax({
+                url: 'update_switch.php',
+                method: 'POST',
+                data: {
+                    switchState: isChecked,
+                    deviceCode: selectedDevice
+                },
+                success: function(response) {
+                    console.log(response);
+
+                    // Store switch state in localStorage
+                    localStorage.setItem('switchState', isChecked ? '1' : '0');
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error updating switch state:", error);
+                }
+            });
         });
-    }
 
-    // Initial update when document is ready
-    updateSwitchState();
-
-    // Change event for toggle switch
-    $('#toggleSwitch').change(function() {
-        var isChecked = $(this).is(':checked') ? 1 : 0;
-        var selectedDevice = $('#device_select').val();
-        $.ajax({
-            url: 'update_switch.php',
-            method: 'POST',
-            data: {
-                switchState: isChecked,
-                deviceCode: selectedDevice
-            },
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(xhr, status, error) {
-                console.error("Error updating switch state:", error);
-            }
-        });
+        // Retrieve and set switch state from localStorage on page load
+        var storedSwitchState = localStorage.getItem('switchState');
+        if (storedSwitchState !== null) {
+            $('#toggleSwitch').prop('checked', storedSwitchState === '1');
+        }
     });
-});
+</script>
 
-            </script>
+
+
         </div>
 
         <form action="setrelaytime.php" id="timersetting" method="post" class="timer_set">

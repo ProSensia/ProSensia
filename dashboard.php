@@ -102,7 +102,7 @@ function to_add_device()
             <div class="lowerpart">
 
             
-            <div class="lower_part_0">
+                <div class="lower_part_0">
         <label class="switch">
             <input type="checkbox" id="toggleSwitch" checked>
             <span class="slider round"></span>
@@ -132,54 +132,67 @@ function to_add_device()
 
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-$(document).ready(function() {
-    // Function to update switch state
-    function updateSwitchState() {
-        var selectedDevice = $('#device_select').val();
-        $.ajax({
-            url: 'update_switch.php',
-            method: 'POST',
-            data: {
-                getSwitchState: true, // Signal to get current switch state
-                deviceCode: selectedDevice
-            },
-            success: function(response) {
-                var isChecked = response.trim() === '1'; // Check if response is '1'
-                $('#toggleSwitch').prop('checked', isChecked);
-            },
-            error: function(xhr, status, error) {
-                console.error("Error fetching switch state:", error);
-            }
-        });
-    }
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Function to update switch state
+        function updateSwitchState() {
+            var selectedDevice = $('#device_select').val();
+            $.ajax({
+                url: 'update_switch.php',
+                method: 'POST',
+                data: {
+                    getSwitchState: true,
+                    deviceCode: selectedDevice
+                },
+                success: function(response) {
+                    var isChecked = response.trim() === '1';
+                    $('#toggleSwitch').prop('checked', isChecked);
 
-    // Initial update when document is ready
-    updateSwitchState();
+                    // Store switch state in localStorage
+                    localStorage.setItem('switchState', isChecked ? '1' : '0');
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching switch state:", error);
+                }
+            });
+        }
 
-    // Change event for toggle switch
-    $('#toggleSwitch').change(function() {
-        var isChecked = $(this).is(':checked') ? 1 : 0;
-        var selectedDevice = $('#device_select').val();
-        $.ajax({
-            url: 'update_switch.php',
-            method: 'POST',
-            data: {
-                switchState: isChecked,
-                deviceCode: selectedDevice
-            },
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(xhr, status, error) {
-                console.error("Error updating switch state:", error);
-            }
+        // Initial update when document is ready
+        updateSwitchState();
+
+        // Change event for toggle switch
+        $('#toggleSwitch').change(function() {
+            var isChecked = $(this).is(':checked') ? 1 : 0;
+            var selectedDevice = $('#device_select').val();
+            $.ajax({
+                url: 'update_switch.php',
+                method: 'POST',
+                data: {
+                    switchState: isChecked,
+                    deviceCode: selectedDevice
+                },
+                success: function(response) {
+                    console.log(response);
+
+                    // Store switch state in localStorage
+                    localStorage.setItem('switchState', isChecked ? '1' : '0');
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error updating switch state:", error);
+                }
+            });
         });
+
+        // Retrieve and set switch state from localStorage on page load
+        var storedSwitchState = localStorage.getItem('switchState');
+        if (storedSwitchState !== null) {
+            $('#toggleSwitch').prop('checked', storedSwitchState === '1');
+        }
     });
-});
+</script>
 
-    </script>
+
                 <div class="lower_part_1">
 
               

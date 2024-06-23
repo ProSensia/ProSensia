@@ -4,16 +4,18 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+$user_id = $_SESSION['user_id'];
+$mac = $_POST['mac'];
 
-    $user_id = $_SESSION['user_id'];
-    $mac = $_POST['mac'];
+include "./partials/db_conn.php";
 
-    include "./partials/db_conn.php";
+// Set the time zone to Pakistan Standard Time (PST)
+date_default_timezone_set('Asia/Karachi');
 
 // Check if POST variables are set
-if (isset($_POST['mac'], $_POST['voltage'], $_POST['current'], $_POST['temperature'], $_POST['humidity'])) {
+if (isset($_POST['mac'], $_POST['current'], $_POST['temperature'], $_POST['humidity'])) {
     $mac = $_POST['mac'];
-    $voltage = $_POST['voltage'];
+
     $current = $_POST['current'];
     $temperature = $_POST['temperature'];
     $humidity = $_POST['humidity'];
@@ -47,9 +49,12 @@ if (isset($_POST['mac'], $_POST['voltage'], $_POST['current'], $_POST['temperatu
     //     echo "Error creating tables: " . $conn->error;
     // }
 
-    // Insert data into data table
-    $sql_insert = "INSERT INTO $tableName_data (voltage, current, temperature, humidity)
-    VALUES ('$voltage', '$current', '$temperature', '$humidity')";
+    // Get the current timestamp in Pakistan time
+    $timestamp = date('Y-m-d H:i:s');
+
+    // Insert data into data table with the timestamp
+    $sql_insert = "INSERT INTO $tableName_data (current, temperature, humidity, timestamp)
+    VALUES ('$current', '$temperature', '$humidity', '$timestamp')";
 
     if ($conn->query($sql_insert) === TRUE) {
         echo "New record created successfully";

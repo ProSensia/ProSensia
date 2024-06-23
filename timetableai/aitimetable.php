@@ -9,67 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.3.0/luxon.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="src/style/dashboard.css">
 </head>
 <body>
-
-<main class="dashboard_container">
-<aside class="option_container">
-    <div class="logo">
-        <img src="assets/images/3 1.png" alt="">
-    </div>
-    <div class="device_options">
-        <li class="the_options" id="todashboard"><img src="src/images/dashboard.png" alt=""><span>Dashboard</span></li>
-        <li class="the_options" id="devices"><img src="src/images/devices.png" alt=""><span>Devices</span></li>
-        <li class="the_options" id="timetable"><img src="src/images/timetable.png" alt=""><span>Timetable</span></li>
-        <li class="the_options"><img src="src/images/profile.png" alt=""><span>Profile</span></li>
-    </div>
-    <div class="prolog">
-        <a href="logout.php" id="logoutbtn"><img src="assets/logos/018_128_arrow_exit_logout-512.webp" alt=""><span>Logout</span></a>
-    </div>
-</aside>  
-
-
-        <section class="device_container">
-
-            <div class="toppart">
-                <div class="welcome">
-                    <h3>DashBoard <br>
-
-                        Welcome <?php 
-                        echo $_SESSION['username']   ?> 
-                        </h3>
-                </div>
-                <div class="adddevice">
-                    
-                    <button id="add_device_button" onclick="to_add_device()"><img src="src/images/plus.png" alt="" class="add_button_img">
-                    <span>Add Device</span>
-                    </button>
-
-<script>
-
-function to_add_device() {
-window.location.href="multidevices.php";
-}
-
-</script>
-
-
-
-
-
-                </div>
-            </div> 
-
-
-            
-
-
-
-         
-         
-        </section>
-    </main>
     <div class="container mt-5">
         <h1>TimeTable Detection</h1>
         <p>Click on the "Choose File" button to upload a file:</p>
@@ -189,26 +130,5 @@ window.location.href="multidevices.php";
             });
         }
     </script>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    let todashboard = document.getElementById("todashboard");
-    todashboard.addEventListener("click", () => {
-        window.location.href = "dashboard.php";
-    });
-
-    let timetable = document.getElementById("timetable");
-    timetable.addEventListener("click", () => {
-        window.location.href = "aitimetable.php";
-    });
-
-    let devices = document.getElementById("devices");
-    devices.addEventListener("click", () => {
-        window.location.href = "multidevices.php";
-    });
-});
-</script>
-
 </body>
 </html>

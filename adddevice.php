@@ -37,7 +37,6 @@ $mac_sanitized = str_replace(':', '_', $mac);
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         starttime TIMESTAMP NULL,
         endtime TIMESTAMP NULL,
-       manual_override BOOLEAN NOT NULL,
         timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
 

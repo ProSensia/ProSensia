@@ -56,21 +56,21 @@ include "components/navbar.php";
         </div>
         <div class="heroHomeTopContent">
           <div>
-            <img
-              src="./src/images/yellowLine.png"
-              alt=""
-              class="heroHomeTopContentImg1"
-            />
-            <img
-              src="./src/images/yellowLine.png"
-              alt=""
-              class="heroHomeTopContentImg2"
-            />
-            <img
-              src="./src/images/yellowLine.png"
-              alt=""
-              class="heroHomeTopContentImg3"
-            />
+            <!--<img-->
+            <!--  src="./src/images/yellowLine.png"-->
+            <!--  alt=""-->
+            <!--  class="heroHomeTopContentImg1"-->
+            <!--/>-->
+            <!--<img-->
+            <!--  src="./src/images/yellowLine.png"-->
+            <!--  alt=""-->
+            <!--  class="heroHomeTopContentImg2"-->
+            <!--/>-->
+            <!--<img-->
+            <!--  src="./src/images/yellowLine.png"-->
+            <!--  alt=""-->
+            <!--  class="heroHomeTopContentImg3"-->
+            <!--/>-->
             <h1>
               Empowering <br />
               Devices, <br />

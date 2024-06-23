@@ -2,40 +2,49 @@
 include "./partials/db_conn.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Update or insert the switch state
-    if (isset($_POST['switchState']) && isset($_POST['deviceCode'])) {
-        $switchState = (int)$_POST['switchState'];
-        $device_code = $_POST['deviceCode'];
+    if (isset($_POST['getSwitchState'])) {
+        $device_code = isset($_POST['deviceCode']) ? $_POST['deviceCode'] : '';
+        
+        if (!empty($device_code)) {
+            $mac_sanitized = str_replace(':', '_', $device_code);
+            $tableName = "device_manual_" . $mac_sanitized;
 
-        $mac_sanitized = str_replace(':', '_', $device_code);
-        $tableName = "device_control_" . $mac_sanitized;
+            // Fetch last saved state
+            $stmt = $conn->prepare("SELECT manual_override FROM $tableName ORDER BY id DESC LIMIT 1");
+            $stmt->execute();
+            $stmt->bind_result($switchState);
+            $stmt->fetch();
+            $stmt->close();
 
-        // Update or insert the switch state
-        $stmt = $conn->prepare("INSERT INTO $tableName (`manual_override`) VALUES (?) ON DUPLICATE KEY UPDATE `manual_override` = ?");
-        $stmt->bind_param("ii", $switchState, $switchState);
-
-        if ($stmt->execute() === TRUE) {
-            echo "Record updated successfully";
+            // Return the last saved state
+            echo $switchState;
         } else {
-            echo "Error updating record: " . $stmt->error;
+            echo "Invalid device code.";
         }
+    } elseif (isset($_POST['switchState'], $_POST['deviceCode'])) {
+        $switchState = isset($_POST['switchState']) ? (int)$_POST['switchState'] : 0;
+        $device_code = isset($_POST['deviceCode']) ? $_POST['deviceCode'] : '';
 
-        $stmt->close();
-    } elseif (isset($_POST['getSwitchState']) && isset($_POST['deviceCode'])) {
-        // Fetch the current state after update
-        $device_code = $_POST['deviceCode'];
-        $mac_sanitized = str_replace(':', '_', $device_code);
-        $tableName = "device_control_" . $mac_sanitized;
+        if (!empty($device_code)) {
+            $mac_sanitized = str_replace(':', '_', $device_code);
+            $tableName = "device_manual_" . $mac_sanitized;
 
-        $result = $conn->query("SELECT `manual_override` FROM $tableName LIMIT 1");
-        if ($result && $result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            echo $row['manual_override'];
+            // Prepare and bind
+            $stmt = $conn->prepare("INSERT INTO $tableName (manual_override) VALUES (?)");
+            $stmt->bind_param("i", $switchState);
+
+            // Execute the statement
+            if ($stmt->execute() === TRUE) {
+                echo "Record updated successfully";
+            } else {
+                echo "Error updating record: " . $stmt->error;
+            }
+
+            // Close the statement
+            $stmt->close();
         } else {
-            echo "0"; // Default if no rows found
+            echo "Invalid device code.";
         }
-    } else {
-        echo "Invalid request";
     }
 }
 

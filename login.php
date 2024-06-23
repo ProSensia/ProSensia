@@ -26,11 +26,11 @@ $num=mysqli_num_rows($result);
         $_SESSION["loggedin"]=true;
         $_SESSION['username'] = $username;
         $_SESSION['user_id'] = $user_id;
-                header("location:dashboard.php");
+                header("location:/dashboard");
             }
             else
             {
-               echo "wrong pass";
+               echo "<script>alert('Wrong Password or username')</script>";
             }
         }
       

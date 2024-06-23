@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql_insert = "INSERT INTO $tableName_control (STARTTIME, endtime) VALUES ('$starttime', '$endtime')";
 
     if ($conn->query($sql_insert) === TRUE) {
-        echo "New record created successfully in device control table.<br>";
+       
     } else {
         echo "Error: " . $sql_insert . "<br>" . $conn->error;
     }
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql_timer = "INSERT INTO timer (userid, device_id, start_time, end_time) VALUES ('$user_id', '$device', '$starttime', '$endtime')";
 
     if ($conn->query($sql_timer) === TRUE) {
-        echo "New record created successfully in timer table.<br>";
+      
     } else {
         echo "Error: " . $sql_timer . "<br>" . $conn->error;
     }

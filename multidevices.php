@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-$recieve_data = "SELECT * FROM `deviceslist`";
+$recieve_data = "SELECT * FROM `deviceslist` where `user_id`=$user_id";
 $result = mysqli_query($conn, $recieve_data);
 $devices_listed = array();
 
@@ -88,7 +88,7 @@ if (mysqli_num_rows($result) > 0) {
             </div>
 
             <div class="adddevice">
-                <form id="add_form" action="data.php" method="post">
+                <form id="add_form" action="adddevice.php" method="post">
                     <input type="text" placeholder="MAC Address" name="mac" id="add_device_input" required>
                     <input type="text" placeholder="Location" name="location" id="device_location_input" required>
                     <input type="submit" value="Add" id="add_device_submit">

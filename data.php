@@ -24,28 +24,28 @@ if (isset($_POST['mac'], $_POST['voltage'], $_POST['current'], $_POST['temperatu
     $tableName_control = "device_control_" . $mac_sanitized;
 
     // Create data table query
-    $sql_data_table = "CREATE TABLE IF NOT EXISTS $tableName_data (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        voltage FLOAT NOT NULL,
-        current FLOAT NOT NULL,
-        temperature FLOAT NOT NULL,
-        humidity FLOAT NOT NULL,
-        timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    )";
+    // $sql_data_table = "CREATE TABLE IF NOT EXISTS $tableName_data (
+    //     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    //     voltage FLOAT NOT NULL,
+    //     current FLOAT NOT NULL,
+    //     temperature FLOAT NOT NULL,
+    //     humidity FLOAT NOT NULL,
+    //     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    // )";
 
-    // Create control table query
-    $sql_control_table = "CREATE TABLE IF NOT EXISTS $tableName_control (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        starttime TIMESTAMP NULL,
-        endtime TIMESTAMP NULL,
-        timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    )";
+    // // Create control table query
+    // $sql_control_table = "CREATE TABLE IF NOT EXISTS $tableName_control (
+    //     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    //     starttime TIMESTAMP NULL,
+    //     endtime TIMESTAMP NULL,
+    //     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    // )";
 
-    if ($conn->query($sql_data_table) === TRUE && $conn->query($sql_control_table) === TRUE) {
-        echo "Tables created successfully";
-    } else {
-        echo "Error creating tables: " . $conn->error;
-    }
+    // if ($conn->query($sql_data_table) === TRUE && $conn->query($sql_control_table) === TRUE) {
+    //     echo "Tables created successfully";
+    // } else {
+    //     echo "Error creating tables: " . $conn->error;
+    // }
 
     // Insert data into data table
     $sql_insert = "INSERT INTO $tableName_data (voltage, current, temperature, humidity)

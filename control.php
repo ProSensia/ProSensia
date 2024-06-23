@@ -1,35 +1,41 @@
 <?php
 include "./partials/db_conn.php";
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$mac = $_GET['mac'];  // Get the MAC address from the request
+date_default_timezone_set('Asia/Karachi');
 
-// Sanitize MAC address to use it as a table name
+$mac = $_GET['mac'];
 $mac_sanitized = str_replace(':', '_', $mac);
 $tableName = "device_control_" . $mac_sanitized;
 
-$sql = "SELECT starttime, endtime FROM $tableName";
+$sql = "SELECT starttime, endtime, manual_override FROM $tableName";
 $result = $conn->query($sql);
 
 $response = array();
+$relayStatus = 0;
+
+
+
+
 if ($result->num_rows > 0) {
-  // Get current time
-  $currentTime = new DateTime();
+    $currentTime = new DateTime('now', new DateTimeZone('Asia/Karachi'));
+    while($row = $result->fetch_assoc()) {
+        $startTime = new DateTime($row['starttime']);
+        $endTime = new DateTime($row['endtime']);
+        $manualOverride = $row['manual_override'];
 
-  // Fetch the row
-  while($row = $result->fetch_assoc()) {
-    $startTime = new DateTime($row['starttime']);
-    $endTime = new DateTime($row['endtime']);
-
-    // Check if current time is within start and end time
-    if ($currentTime >= $startTime && $currentTime <= $endTime) {
-      $response['relay'] = 0;  // Turn on the relay
-    } else {
-      $response['relay'] = 1;  // Turn off the relay
+        if ($manualOverride == 0) {
+            $relayStatus = 0;
+            break;
+        } elseif ($currentTime >= $startTime && $currentTime <= $endTime) {
+            $relayStatus = 1;
+        }
     }
-  }
-} else {
-  $response['relay'] = 1;  // Default to off if no data
 }
+
+$response['relay'] = $relayStatus;
 
 $conn->close();
 
